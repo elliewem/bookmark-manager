@@ -22,3 +22,6 @@ As a user
 so that I can search my links
 I want to be able to search by tag
 ```
+
+## Domain model
+![Alt text](img/domain-model.jpg)
