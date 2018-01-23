@@ -6,7 +6,6 @@ feature 'Creating links' do
     fill_in('url', :with => 'www.google.com')
     fill_in('title', :with => 'Google')
     click_button('Submit')
-    p Link.all
     expect(page).to have_content('Google')
   end
 
