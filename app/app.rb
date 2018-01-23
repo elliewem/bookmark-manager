@@ -7,7 +7,7 @@ require_relative '../models/link.rb'
 class BookMarkManager < Sinatra::Base
 
   get '/' do
-    'Hello!'
+    erb(:index)
   end
 
   get '/links' do
