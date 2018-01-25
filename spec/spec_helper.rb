@@ -4,6 +4,7 @@ require_relative '../app/models/link.rb'
 require 'capybara'
 require 'capybara/rspec'
 require 'rspec'
+require 'features/web_helpers.rb'
 
 Capybara.app = BookMarkManager
 
