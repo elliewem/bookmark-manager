@@ -8,6 +8,12 @@ require_relative './models/user.rb'
 class BookMarkManager < Sinatra::Base
   enable :sessions
 
+  helpers do
+    def current_user
+      @current_user = User.get(session['id'])
+    end
+  end
+
   get '/' do
     erb(:main)
   end
