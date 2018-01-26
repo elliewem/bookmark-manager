@@ -2,6 +2,7 @@ def sign_up
   visit '/sign_up'
   fill_in('email', :with => 'test@test.co.uk')
   fill_in('password', :with => 'makers')
+  fill_in('password_confirmation', :with => 'makers')
   click_button 'Submit'
 end
 
