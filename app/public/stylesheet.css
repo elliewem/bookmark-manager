@@ -1,0 +1,15 @@
+body {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+  padding-top: 0.2em;
+}
+
+.welcome {
+  font-family: 'Open Sans Condensed', sans-serif;
+}

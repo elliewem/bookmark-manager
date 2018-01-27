@@ -3,6 +3,7 @@ require_relative '../app/app.rb'
 require_relative '../app/models/link.rb'
 require 'capybara'
 require 'capybara/rspec'
+require 'sinatra/flash'
 require 'rspec'
 require 'features/web_helpers.rb'
 

@@ -1,5 +1,7 @@
 ENV["RACK_ENV"] = "development"
 require 'sinatra/base'
+require 'sinatra'
+require 'sinatra/flash'
 require_relative './data_mapper_setup'
 require_relative './models/link.rb'
 require_relative './models/tag.rb'
@@ -7,6 +9,7 @@ require_relative './models/user.rb'
 
 class BookMarkManager < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
 
   helpers do
     def current_user
@@ -41,14 +44,20 @@ class BookMarkManager < Sinatra::Base
     erb(:links)
   end
 
-  get '/sign_up' do
-    erb(:sign_up)
+  get '/users/sign_up' do
+    erb(:'users/sign_up')
   end
 
-  post '/sign_up' do
-    user = User.create(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
-    session['id'] = user.id
-    redirect to('/links')
+  post '/users/sign_up' do
+    user = User.new(email: params[:email], password: params[:password], password_confirmation: params[:password_confirmation])
+    if user.save
+      session['id'] = user.id
+      redirect to('/links')
+    else
+      flash[:email] = params[:email]
+      flash[:error] = "The passwords do not match. Please try again."
+      redirect to('/users/sign_up')
+    end
   end
 
 end
